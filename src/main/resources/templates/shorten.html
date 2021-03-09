@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>URL Shortening Service</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<form action="#" th:action="@{/shorten}" th:object="${shortenedUrlForm}" method="post">
+    <p>
+        <label for="originalUrl">Original URL: </label>
+        <input id="originalUrl" type="text" th:field="*{originalUrl}"/>
+        <output th:if="${#fields.hasErrors('originalUrl')}" th:errors="*{originalUrl}">Original URL Error</output>
+    </p>
+    <p><input type="submit" value="Shorten"/> <input type="reset" value="Reset"/></p>
+</form>
+</body>
+</html>

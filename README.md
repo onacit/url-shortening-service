@@ -1,29 +1,53 @@
-# README #
+# URL Shortening Application
 
-This README would normally document whatever steps are necessary to get your application up and running.
+A simple URL-shortening application.
 
-### What is this repository for? ###
+## APIs
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+### `GET /`
+Initializes and returns initial page name.
 
-### How do I get set up? ###
+### `POST /shorten`
+Shortens given form data.
+```
+POST /shorten HTTP/1.1
+Host: localhost:8080
+Content-Type: application/x-www-form-urlencoded
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+originalUrl=http%3A%2F%2Fwww.daum.net
+```
+```
+HTTP/1.1 200 OK
+Content-Type: text/html
 
-### Contribution guidelines ###
+<html>
+...
+</html>
+```
 
-* Writing tests
-* Code review
-* Other guidelines
+### `GET /widen/{shortenedId}`
+(Re)Widen specified `shortenedId` and redirects the original URL.
+(A new tab/window may pop.)
+```
+GET /widen/{shortenedId} HTTP/1.1
+Host: localhost:8080
 
-### Who do I talk to? ###
+```
+```
+HTTP/1.1 302 Found
+Location: <original-url>
 
-* Repo owner or admin
-* Other community or team contact
+```
+
+
+## Build, run, and see
+
+Build the application and run.
+
+```shell
+$ gradlew clean bootRun
+...
+$
+```
+
+Open [http://localhost:8080](http://localhost:8080) with your browser.

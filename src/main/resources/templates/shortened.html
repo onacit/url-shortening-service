@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>URL Shortening Service</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<p>Original URL:
+    <output th:text="${shortenedUrl.originalUrl}"></output>
+</p>
+<p>Shortened URL:
+    <a th:href="@{|/widen/${shortenedUrl.shortenedId}|}" th:target="_blank">
+        <output th:text="${shortenedUrl.shortenedId}"></output>
+    </a> (click to open)
+</p>
+<a href="/">Shorten another URL</a>
+</body>
+</html>
