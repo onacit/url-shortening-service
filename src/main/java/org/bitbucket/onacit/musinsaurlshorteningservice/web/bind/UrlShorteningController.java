@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.validation.Valid;
@@ -54,6 +55,10 @@ public class UrlShorteningController {
             return "shorten";
         }
         final ShortenedUrl shortenedUrl = urlShorteningService.shorten(shortenedUrlForm.getOriginalUrl());
+        final ServletUriComponentsBuilder builder = ServletUriComponentsBuilder.fromCurrentContextPath();
+        builder.pathSegment("widen");
+        builder.pathSegment(shortenedUrl.getShortenedId());
+        shortenedUrl.setShortenedUrl(builder.build().toUriString());
         model.addAttribute(ATTRIBUTE_NAME_SHORTENED_URL, shortenedUrl);
         return "shortened";
     }

@@ -2,10 +2,7 @@ package org.bitbucket.onacit.musinsaurlshorteningservice.data.jpa.domain;
 
 import lombok.*;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -34,4 +31,7 @@ public class ShortenedUrl extends BaseEntity {
     @Basic(optional = false)
     @Column(name = "shortened_id", nullable = false, insertable = true, updatable = false, unique = true)
     private String shortenedId;
+
+    @Transient
+    private String shortenedUrl;
 }

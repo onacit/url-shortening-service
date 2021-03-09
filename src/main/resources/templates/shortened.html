@@ -8,10 +8,15 @@
 <p>Original URL:
     <output th:text="${shortenedUrl.originalUrl}"></output>
 </p>
-<p>Shortened URL:
+<p>Shortened ID:
     <a th:href="@{|/widen/${shortenedUrl.shortenedId}|}" th:target="_blank">
         <output th:text="${shortenedUrl.shortenedId}"></output>
-    </a> (click to open)
+    </a> (click to widen/redirect)
+</p>
+<p>Redirect URL:
+    <a th:href="@{|/widen/${shortenedUrl.shortenedId}|}" th:target="_blank">
+        <output th:text="${shortenedUrl.shortenedUrl}"></output>
+    </a> (click to widen/redirect)
 </p>
 <a href="/">Shorten another URL</a>
 </body>
